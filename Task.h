@@ -5,12 +5,12 @@
 #ifndef BENINCASATODOLIST_TASK_H
 #define BENINCASATODOLIST_TASK_H
 #include <string>
-#include "time.h"
+#include "Clock.h"
 #include "Date.h"
 
 class Task {
 public:
-    Task(std::string& n, std::string& desc, Date d, Time t) : name(n), description(desc), day(d), time(t){}
+    Task(std::string& n, std::string& desc, Date d, Clock t) : name(n), description(desc), day(d), time(t){}
 
     std::string getName() {
         return name;
@@ -28,7 +28,7 @@ private:
     std::string name;
     std::string description;
     Date day;
-    Time time;
+    Clock time;
     bool completed {false};
 };
 

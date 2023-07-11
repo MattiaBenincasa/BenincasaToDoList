@@ -2,12 +2,12 @@
 // Created by Mattia Benincasa on 10/07/23.
 //
 
-#ifndef BENINCASATODOLIST_TIME_H
-#define BENINCASATODOLIST_TIME_H
+#ifndef BENINCASATODOLIST_CLOCK_H
+#define BENINCASATODOLIST_CLOCK_H
 
-class Time {
+class Clock {
 public:
-    Time(int h, int m) : minute(m), hour(h) {}
+    Clock(int h, int m) : minute(m), hour(h) {}
 
     int getMinute() const{
         return minute;
@@ -30,4 +30,4 @@ private:
     int hour;
 };
 
-#endif //BENINCASATODOLIST_TIME_H
+#endif //BENINCASATODOLIST_CLOCK_H

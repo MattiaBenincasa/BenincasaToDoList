@@ -2849,8 +2849,8 @@ reference):
 ```cpp
 class MockBuzzer : public Buzzer {
  public:
-  MOCK_METHOD(bool, DoShareBuzz, (Buzz* buzz, Time timestamp));
-  bool ShareBuzz(std::unique_ptr<Buzz> buzz, Time timestamp) override {
+  MOCK_METHOD(bool, DoShareBuzz, (Buzz* buzz, Clock timestamp));
+  bool ShareBuzz(std::unique_ptr<Buzz> buzz, Clock timestamp) override {
     return DoShareBuzz(buzz.get(), timestamp);
   }
 };

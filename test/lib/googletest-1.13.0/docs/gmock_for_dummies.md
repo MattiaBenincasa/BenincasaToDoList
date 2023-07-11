@@ -503,7 +503,7 @@ return the same pointer every time. If you want the side effect to happen every
 time, you need to define a custom action, which we'll teach in the
 [cook book](gmock_cook_book.md).
 
-Time for another quiz! What do you think the following means?
+Clock for another quiz! What do you think the following means?
 
 ```cpp
 using ::testing::Return;

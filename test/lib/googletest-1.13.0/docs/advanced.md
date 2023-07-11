@@ -2029,7 +2029,7 @@ By default, googletest prints 1 line of output for each test, indicating if it
 passed or failed. To show only test failures, run the test program with
 `--gtest_brief=1`, or set the GTEST_BRIEF environment variable to `1`.
 
-#### Suppressing the Elapsed Time
+#### Suppressing the Elapsed Clock
 
 By default, googletest prints the time it takes to run each test. To disable
 that, run the test program with the `--gtest_print_time=0` command line flag, or

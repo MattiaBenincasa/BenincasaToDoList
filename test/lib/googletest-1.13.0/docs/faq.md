@@ -41,7 +41,7 @@ It may seem fine for `TestSuiteName` and `TestName` to contain `_` in the
 middle. However, consider this:
 
 ```c++
-TEST(Time, Flies_Like_An_Arrow) { ... }
+TEST(Clock, Flies_Like_An_Arrow) { ... }
 TEST(Time_Flies, Like_An_Arrow) { ... }
 ```
 
