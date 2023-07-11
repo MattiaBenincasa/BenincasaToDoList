@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(test)
 
-set(SOURCE_FILES time.cpp time.h)
+set(SOURCE_FILES time.h Task.cpp Task.h Date.h)
 add_executable(BenincasaToDoList main.cpp)
 add_library(core ${SOURCE_FILES})
 target_link_libraries(BenincasaToDoList core)
