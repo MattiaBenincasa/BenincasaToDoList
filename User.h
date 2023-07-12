@@ -4,6 +4,7 @@
 
 #ifndef BENINCASATODOLIST_USER_H
 #define BENINCASATODOLIST_USER_H
+#include <iostream>
 #include <map>
 #include <string>
 #include "Task.h"
@@ -19,6 +20,8 @@ public:
     void removeTask(std::string& n);
     void markCompleted(std::string& n);
     void markNotCompleted(std::string& n);
+
+    void printTasks() const;
 
 private:
     std::map<std::string, Task> tasks;

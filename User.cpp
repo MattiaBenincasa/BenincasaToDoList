@@ -22,3 +22,8 @@ void User::markNotCompleted(std::string &n) {
     auto findTask = tasks.find(n);
     findTask->second.notCompleted();
 }
+
+void User::printTasks() const {
+    for(auto task : tasks)
+        std::cout << task.second.getName() << " - " << task.second.getDescription() << " - " << std::endl;
+}

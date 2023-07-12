@@ -10,7 +10,7 @@
 
 class Task {
 public:
-    Task(std::string& n, std::string& desc, Date d, Clock t) : name(n), description(desc), day(d), time(t){}
+    Task(std::string& n, std::string& desc, Date& d, Clock& t) : name(n), description(desc), day(d), time(t){}
 
     std::string getName() const{
         return name;
@@ -26,6 +26,18 @@ public:
 
     bool getCompleted() const{
         return completed;
+    }
+
+    std::string getDescription() const{
+        return description;
+    }
+
+    Date getData() const {
+        return day;
+    }
+
+    Clock getTime() const {
+        return time;
     }
 
     bool operator == (const Task& right) const{
