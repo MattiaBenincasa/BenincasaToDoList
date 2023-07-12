@@ -10,7 +10,12 @@
 
 class User {
 public:
-    void addTask(std::string& n, std::string& desc, Date d, Clock t);
+
+    std::map<std::string, Task> getTasks() const {
+        return tasks;
+    }
+
+    void addTask(const Task& newTask);
     void removeTask(std::string& n);
     void markCompleted(std::string& n);
     void markNotCompleted(std::string& n);

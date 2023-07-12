@@ -12,7 +12,7 @@ class Task {
 public:
     Task(std::string& n, std::string& desc, Date d, Clock t) : name(n), description(desc), day(d), time(t){}
 
-    std::string getName() {
+    std::string getName() const{
         return name;
     }
 
@@ -22,6 +22,17 @@ public:
 
     void notCompleted() {
         completed = false;
+    }
+
+    bool getCompleted() const{
+        return completed;
+    }
+
+    bool operator == (const Task& right) const{
+        if(name == right.name)
+            return true;
+        else
+            return false;
     }
 
 private:

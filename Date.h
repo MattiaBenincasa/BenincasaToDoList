@@ -7,7 +7,7 @@
 
 class Date {
 public:
-    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+    Date(int d = 1, int m = 1, int y = 1950) : day(d), month(m), year(y) {}
 
     int getDay() const{
         return day;

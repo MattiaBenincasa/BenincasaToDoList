@@ -7,7 +7,7 @@
 
 class Clock {
 public:
-    Clock(int h, int m) : minute(m), hour(h) {}
+    Clock(int h = 0, int m = 0) : minute(m), hour(h) {}
 
     int getMinute() const{
         return minute;
