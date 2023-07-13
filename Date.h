@@ -14,26 +14,17 @@ public:
         return day;
     }
 
-    void setDay(int d) {
-        day = d;
-    }
-
     int getMonth() const{
         return month;
-    }
-
-    void setMonth(int m) {
-        month = m;
     }
 
     int getYear() const {
         return year;
     }
 
-    void setYear(int y) {
-        year = y;
-    }
-
+    void setDay(int d);
+    void setMonth(int m);
+    void setYear(int y);
     friend std::ostream& operator << (std::ostream& os, const Date& d);
 
 private:

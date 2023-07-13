@@ -1,5 +1,6 @@
 #include <iostream>
 #include "User.h"
+#include "InvalidDate.h"
 
 int main() {
     User user;
@@ -22,15 +23,22 @@ int main() {
                 std::cout << "Insert a description for the task" << std::endl;
                 std::cin.ignore();
                 std::getline(std::cin, description);
-                std::cout << "Date of the task " << std::endl;
-                std::cin >> day >> slash >> month >> slash >> year;
-                std::cout << "Time of the task " << std::endl;
-                std::cin >> hour >> points >> min;
-                Date date(day, month, year);
-                Clock time(hour, min);
-                Task task(name, description, date, time);
-                user.addTask(task);
-                user.printTasks();
+                try {
+                    std::cout << "Date of the task " << std::endl;
+                    std::cin >> day >> slash >> month >> slash >> year;
+                    std::cout << "Time of the task " << std::endl;
+                    std::cin >> hour >> points >> min;
+                    Date date;
+                    date.setYear(year);
+                    date.setMonth(month);
+                    date.setDay(day);
+                    Clock time(hour, min);
+                    Task task(name, description, date, time);
+                    user.addTask(task);
+                    user.printTasks();
+                }catch (InvalidDate& e){
+                    std::cout << "Date is not valid" << std::endl;
+                }
                 break;
             }
             case 2:{
