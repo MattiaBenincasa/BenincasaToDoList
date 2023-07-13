@@ -11,6 +11,7 @@
 
 class Task {
 public:
+    Task() = default;
     Task(std::string& n, std::string& desc, Date& d, Clock& t);
 
     std::string getName() const{

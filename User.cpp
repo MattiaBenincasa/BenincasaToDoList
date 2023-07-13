@@ -4,8 +4,32 @@
 
 #include "User.h"
 
+User::User() {
+
+    std::ifstream inFile;
+    inFile.open("ToDoList.data");
+    if(!inFile)
+        return;
+
+    while (!inFile.eof()){
+        Task task;
+        inFile >> task;
+        tasks.insert(std::pair<std::string, Task>(task.getName(), task));
+    }
+
+    inFile.close();
+}
+
 void User::addTask(const Task& newTask) {
     tasks.insert(std::make_pair(newTask.getName(), newTask));
+
+    std::ofstream  outFile;
+    outFile.open("ToDoList.data", std::ios::app);
+
+    for(auto &task : tasks)
+        outFile << task.second;
+
+    outFile.close();
 }
 
 void User::removeTask(std::string &n) {

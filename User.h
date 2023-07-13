@@ -8,9 +8,11 @@
 #include <map>
 #include <string>
 #include "Task.h"
+#include <fstream>
 
 class User {
 public:
+    User();
 
     std::map<std::string, Task> getTasks() const {
         return tasks;
