@@ -4,6 +4,7 @@
 
 #ifndef BENINCASATODOLIST_CLOCK_H
 #define BENINCASATODOLIST_CLOCK_H
+#include <iostream>
 
 class Clock {
 public:
@@ -25,6 +26,7 @@ public:
         hour = h;
     }
 
+    friend std::ostream& operator << (std::ostream&, const Clock& c);
 private:
     int minute;
     int hour;

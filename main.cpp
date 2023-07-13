@@ -13,7 +13,7 @@ int main() {
         std::cout << "Select an option" << std::endl;
         std::cout << "1 - add a task" << std::endl;
         std::cout << "2 - remove a task" << std::endl;
-
+        std::cout << "3 - Exit" << std::endl;
         std::cin >> choice;
         switch (choice) {
             case 1:{

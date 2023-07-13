@@ -4,6 +4,7 @@
 
 #ifndef BENINCASATODOLIST_DATE_H
 #define BENINCASATODOLIST_DATE_H
+#include <iostream>
 
 class Date {
 public:
@@ -32,6 +33,8 @@ public:
     void setYear(int y) {
         year = y;
     }
+
+    friend std::ostream& operator << (std::ostream& os, const Date& d);
 
 private:
     int day;
