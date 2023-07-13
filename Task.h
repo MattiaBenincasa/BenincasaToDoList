@@ -32,7 +32,7 @@ public:
         return description;
     }
 
-    Date getData() const {
+    Date getDate() const {
         return day;
     }
 

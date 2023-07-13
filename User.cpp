@@ -25,7 +25,7 @@ void User::markNotCompleted(std::string &n) {
 
 void User::printTasks() const {
     for(auto task : tasks){
-        std::cout << task.second.getName() << " - " << task.second.getDescription() << " - " << task.second.getData() << " - "
+        std::cout << task.second.getName() << " - " << task.second.getDescription() << " - " << task.second.getDate() << " - "
         << task.second.getTime() << " - ";
         if(!task.second.getCompleted())
             std::cout << " NOT COMPLETED " << std::endl;
