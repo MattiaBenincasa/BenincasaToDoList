@@ -31,6 +31,6 @@ void Date::setYear(int y) {
 }
 
 std::ostream& operator << (std::ostream& os, const Date& d){
-    os << d.day << "/" << d.month << "/" << d.year << std::endl;
+    os << d.day << "/" << d.month << "/" << d.year;
     return os;
 }

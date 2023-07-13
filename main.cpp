@@ -32,12 +32,16 @@ int main() {
                     date.setYear(year);
                     date.setMonth(month);
                     date.setDay(day);
-                    Clock time(hour, min);
+                    Clock time;
+                    time.setMinute(min);
+                    time.setHour(hour);
                     Task task(name, description, date, time);
                     user.addTask(task);
                     user.printTasks();
                 }catch (InvalidDate& e){
-                    std::cout << "Date is not valid" << std::endl;
+                    std::cerr << "Date is not valid" << std::endl;
+                }catch (InvalidTime& e){
+                    std::cerr << "Time is not valid" << std::endl;
                 }
                 break;
             }

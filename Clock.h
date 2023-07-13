@@ -5,6 +5,7 @@
 #ifndef BENINCASATODOLIST_CLOCK_H
 #define BENINCASATODOLIST_CLOCK_H
 #include <iostream>
+#include "InvalidTime.h"
 
 class Clock {
 public:
@@ -14,18 +15,12 @@ public:
         return minute;
     }
 
-    void setMinute(int m){
-        minute = m;
-    }
-
     int getHour() const{
         return hour;
     }
 
-    void setHour(int h) {
-        hour = h;
-    }
-
+    void setMinute(int m);
+    void setHour(int h);
     friend std::ostream& operator << (std::ostream&, const Clock& c);
 private:
     int minute;
