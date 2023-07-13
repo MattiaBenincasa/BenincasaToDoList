@@ -29,3 +29,19 @@ std::ostream& operator << (std::ostream& os, const Task& task) {
 
     return os;
 }
+
+std::ofstream& operator << (std::ofstream& ofs, const Task& task){
+    ofs << task.name;
+    ofs << task.description;
+    ofs << task.day;
+    ofs << task.time;
+    return ofs;
+}
+
+std::ifstream& operator >> (std::ifstream& ifs, Task& task){
+    ifs >> task.name;
+    ifs >> task.description;
+    ifs >> task.day;
+    ifs >> task.time;
+    return ifs;
+}

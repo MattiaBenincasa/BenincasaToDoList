@@ -27,6 +27,7 @@ public:
     void setMonth(int m);
     void setYear(int y);
     friend std::ostream& operator << (std::ostream& os, const Date& d);
+    friend std::istream& operator >> (std::istream& is, Date& d);
 
 private:
     int day;

@@ -37,6 +37,8 @@ public:
     void notCompleted();
     bool operator == (const Task& right) const;
     friend std::ostream& operator << (std::ostream& os, const Task& task);
+    friend std::ofstream& operator << (std::ofstream& ofs, const Task& task);
+    friend std::ifstream& operator >> (std::ifstream& ifs, Task& task);
 
 private:
     std::string name;

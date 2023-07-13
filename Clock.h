@@ -22,6 +22,7 @@ public:
     void setMinute(int m);
     void setHour(int h);
     friend std::ostream& operator << (std::ostream&, const Clock& c);
+    friend std::istream& operator >> (std::istream& cin, Clock& c);
 private:
     int minute;
     int hour;

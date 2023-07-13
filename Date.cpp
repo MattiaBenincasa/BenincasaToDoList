@@ -34,3 +34,9 @@ std::ostream& operator << (std::ostream& os, const Date& d){
     os << d.day << "/" << d.month << "/" << d.year;
     return os;
 }
+
+
+std::istream& operator >> (std::istream& is, Date& d){
+    is >> d.day >> d.month >> d.year;
+    return is;
+}

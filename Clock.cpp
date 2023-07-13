@@ -20,3 +20,8 @@ std::ostream& operator << (std::ostream&, const Clock& c){
     std::cout << c.hour << std::setfill('0') << ":" << std::setw(2) << c.minute;
     return std::cout;
 }
+
+std::istream& operator >> (std::istream& cin, Clock& c){
+    cin >> c.hour >> c.minute;
+    return cin;
+}
