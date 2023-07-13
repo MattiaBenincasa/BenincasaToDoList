@@ -7,21 +7,14 @@
 #include <string>
 #include "Clock.h"
 #include "Date.h"
+#include <fstream>
 
 class Task {
 public:
-    Task(std::string& n, std::string& desc, Date& d, Clock& t) : name(n), description(desc), day(d), time(t){}
+    Task(std::string& n, std::string& desc, Date& d, Clock& t);
 
     std::string getName() const{
         return name;
-    }
-
-    void isCompleted() {
-        completed = true;
-    }
-
-    void notCompleted() {
-        completed = false;
     }
 
     bool getCompleted() const{
@@ -40,12 +33,10 @@ public:
         return time;
     }
 
-    bool operator == (const Task& right) const{
-        if(name == right.name)
-            return true;
-        else
-            return false;
-    }
+    void isCompleted();
+    void notCompleted();
+    bool operator == (const Task& right) const;
+    friend std::ostream& operator << (std::ostream& os, const Task& task);
 
 private:
     std::string name;
