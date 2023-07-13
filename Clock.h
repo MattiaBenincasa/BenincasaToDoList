@@ -9,7 +9,7 @@
 
 class Clock {
 public:
-    Clock(int h = 0, int m = 0) : minute(m), hour(h) {}
+    explicit Clock(int h = 0, int m = 0) : minute(m), hour(h) {}
 
     int getMinute() const{
         return minute;
