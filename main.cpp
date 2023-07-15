@@ -8,6 +8,7 @@ int main() {
     std::string name, description;
     int day, month, year, hour, min;
     char slash, points;
+    user.printTasks();
     std::cout << "To Do List" << std::endl << std::endl;
 
     do {

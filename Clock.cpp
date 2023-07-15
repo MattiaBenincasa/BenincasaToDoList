@@ -16,12 +16,20 @@ void Clock::setHour(int h) {
     hour = h;
 }
 
-std::ostream& operator << (std::ostream&, const Clock& c){
-    std::cout << c.hour << std::setfill('0') << ":" << std::setw(2) << c.minute;
-    return std::cout;
+std::ostream& operator << (std::ostream& out, const Clock& c){
+    out << c.hour << std::setfill('0') << ":" << std::setw(2) << c.minute;
+    return out;
 }
 
 std::istream& operator >> (std::istream& cin, Clock& c){
-    cin >> c.hour >> c.minute;
+    cin >> c.hour;
+    cin >> c.minute;
     return cin;
+}
+
+std::ifstream& operator >> (std::ifstream& fin, Clock& c){
+    fin >> c.hour;
+    fin >> c.minute;
+
+    return fin;
 }

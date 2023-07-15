@@ -17,13 +17,14 @@ public:
     std::map<std::string, Task> getTasks() const {
         return tasks;
     }
-
+    void readFile();
     void addTask(const Task& newTask);
     void removeTask(std::string& n);
     void markCompleted(std::string& n);
     void markNotCompleted(std::string& n);
 
     void printTasks() const;
+    ~User();
 
 private:
     std::map<std::string, Task> tasks;

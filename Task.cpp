@@ -21,27 +21,36 @@ bool Task::operator==(const Task &right) const {
 }
 
 std::ostream& operator << (std::ostream& os, const Task& task) {
-    os << "TASK NAME: " << task.name << " | -> " << task.description << " | DATE: " << task.day << " | TIME: " << task.time << " | ";
-    if(!task.completed)
-        os << "NOT COMPLETED |" << std::endl;
+    os << "TASK NAME: " << task.getName() << std::endl;
+    os << "DESCRIPTION: " << task.getDescription() << std::endl;
+    os << "DATE: " << task.getDate() << std::endl;
+    os << "TIME: " << task.getTime() << std::endl;
+    if(!task.getCompleted())
+        os << "NOT COMPLETED " << std::endl;
     else
-        os << "COMPLETED |" << std::endl;
+        os << "COMPLETED" << std::endl;
 
     return os;
 }
 
 std::ofstream& operator << (std::ofstream& ofs, const Task& task){
-    ofs << task.name;
-    ofs << task.description;
-    ofs << task.day;
-    ofs << task.time;
+    ofs << task.name << std::endl;
+    ofs << task.description << std::endl;
+    ofs << task.day.getDay() << std::endl;
+    ofs << task.day.getMonth() << std::endl;
+    ofs << task.day.getYear() << std::endl;
+    ofs << task.time.getHour() << std::endl;
+    ofs << task.time.getMinute() << std::endl;
+    ofs << task.completed << std::endl;
     return ofs;
 }
 
 std::ifstream& operator >> (std::ifstream& ifs, Task& task){
     ifs >> task.name;
-    ifs >> task.description;
+    ifs.ignore();
+    std::getline(ifs, task.description);
     ifs >> task.day;
     ifs >> task.time;
+    ifs >> task.completed;
     return ifs;
 }

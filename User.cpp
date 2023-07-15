@@ -6,29 +6,33 @@
 
 User::User() {
 
-    std::ifstream inFile;
-    inFile.open("ToDoList.data");
-    if(!inFile)
+    readFile();
+}
+
+void User::readFile() {
+    std::string fileName = "ToDoList.data";
+    std::ifstream fin;
+    fin.open("ToDoList.data");
+    if(!fin)
         return;
-
-    while (!inFile.eof()){
-        Task task;
-        inFile >> task;
-        tasks.insert(std::pair<std::string, Task>(task.getName(), task));
+    Task task;
+    std::string line;
+    if(fin.is_open()){
+        while (fin.good()) {
+            fin >> task;
+            tasks.insert(std::make_pair(task.getName(), task));
+        }
+        fin.close();
     }
-
-    inFile.close();
 }
 
 void User::addTask(const Task& newTask) {
     tasks.insert(std::make_pair(newTask.getName(), newTask));
 
-    std::ofstream  outFile;
+    std::ofstream outFile;
     outFile.open("ToDoList.data", std::ios::app);
 
-    for(auto &task : tasks)
-        outFile << task.second;
-
+    outFile << newTask;
     outFile.close();
 }
 
@@ -48,6 +52,15 @@ void User::markNotCompleted(std::string &n) {
 }
 
 void User::printTasks() const {
-    for(auto task : tasks)
+    for(auto &task : tasks)
         std::cout << task.second;
+}
+
+User::~User() {
+    std::ofstream outFile;
+    outFile.open("ToDoList.data", std::ios::trunc);
+    for(auto& task : tasks)
+        outFile << task.second;
+
+    outFile.close();
 }
