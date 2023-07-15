@@ -21,14 +21,11 @@ bool Task::operator==(const Task &right) const {
 }
 
 std::ostream& operator << (std::ostream& os, const Task& task) {
-    os << "TASK NAME: " << task.getName() << std::endl;
-    os << "DESCRIPTION: " << task.getDescription() << std::endl;
-    os << "DATE: " << task.getDate() << std::endl;
-    os << "TIME: " << task.getTime() << std::endl;
+    os << "|TASK NAME: " << task.getName() << " -> " << task.getDescription() << " |DATE: " << task.getDate() << " |TIME: " << task.getTime();
     if(!task.getCompleted())
-        os << "NOT COMPLETED " << std::endl;
+        os << "\t|NOT COMPLETED|" << std::endl;
     else
-        os << "COMPLETED" << std::endl;
+        os << "\t|COMPLETED|" << std::endl;
 
     return os;
 }

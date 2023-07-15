@@ -15,7 +15,9 @@ int main() {
         std::cout << "Select an option" << std::endl;
         std::cout << "1 - add a task" << std::endl;
         std::cout << "2 - remove a task" << std::endl;
-        std::cout << "3 - Exit" << std::endl;
+        std::cout << "3 - mark as completed" << std::endl;
+        std::cout << "4 - mark as not completed" << std::endl;
+        std::cout << "5 - Exit" << std::endl;
         std::cin >> choice;
         switch (choice) {
             case 1:{
@@ -54,11 +56,25 @@ int main() {
                 break;
             }
             case 3:{
+                std::cout << "Insert the name of the task you want to mark as completed" << std::endl;
+                std::cin >> name;
+                user.markCompleted(name);
+                user.printTasks();
+                break;
+            }
+            case 4:{
+                std::cout << "Insert the name of the task you want to mark as not completed" << std::endl;
+                std::cin >> name;
+                user.markNotCompleted(name);
+                user.printTasks();
+                break;
+            }
+            case 5:{
                 break;
             }
             default:
                 std::cout << "Invalid option" << std::endl;
         }
-    }while(choice != 3);
+    }while(choice != 5);
     return 0;
 }
