@@ -36,17 +36,26 @@ void User::addTask(const Task& newTask) {
 
 void User::removeTask(std::string &n) {
     auto findTask = tasks.find(n);
-    tasks.erase(findTask);
+    if(findTask == tasks.end())
+        std::cout << "Task not found" << std::endl;
+    else
+        tasks.erase(findTask);
 }
 
 void User::markCompleted(std::string &n) {
     auto findTask = tasks.find(n);
-    findTask->second.isCompleted();
+    if(findTask == tasks.end())
+        std::cout << "Task not found" << std::endl;
+    else
+        findTask->second.isCompleted();
 }
 
 void User::markNotCompleted(std::string &n) {
     auto findTask = tasks.find(n);
-    findTask->second.notCompleted();
+    if(findTask == tasks.end())
+        std::cout << "Task not found" << std::endl;
+    else
+        findTask->second.notCompleted();
 }
 
 void User::printTasks() const {
