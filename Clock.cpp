@@ -26,10 +26,3 @@ std::istream& operator >> (std::istream& cin, Clock& c){
     cin >> c.minute;
     return cin;
 }
-
-std::ifstream& operator >> (std::ifstream& fin, Clock& c){
-    fin >> c.hour;
-    fin >> c.minute;
-
-    return fin;
-}

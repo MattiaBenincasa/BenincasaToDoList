@@ -5,12 +5,10 @@
 #include "User.h"
 
 User::User() {
-
     readFile();
 }
 
 void User::readFile() {
-    std::string fileName = "ToDoList.data";
     std::ifstream fin;
     fin.open("ToDoList.data");
     if(!fin)
