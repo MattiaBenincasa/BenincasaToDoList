@@ -8,16 +8,18 @@ int main() {
     std::string name, description;
     int day, month, year, hour, min;
     char slash, points;
+    std::cout << "\t\t |To Do List|" << std::endl << std::endl;
+    std::cout << "TASK NOT COMPLETED:" << std::endl;
     user.printTasks();
-    std::cout << "To Do List" << std::endl << std::endl;
-
     do {
+        std::cout << "----------------" << std::endl;
         std::cout << "Select an option" << std::endl;
         std::cout << "1 - add a task" << std::endl;
         std::cout << "2 - remove a task" << std::endl;
         std::cout << "3 - mark as completed" << std::endl;
         std::cout << "4 - mark as not completed" << std::endl;
         std::cout << "5 - Exit" << std::endl;
+        std::cout << "-------------------------" << std::endl;
         std::cin >> choice;
         switch (choice) {
             case 1:{

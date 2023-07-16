@@ -59,6 +59,7 @@ void User::markNotCompleted(std::string &n) {
 }
 
 void User::printTasks() const {
+    std::cout << "------------------" << std::endl;
     for(auto &task : tasks)
         std::cout << task.second;
 }
