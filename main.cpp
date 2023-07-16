@@ -31,7 +31,7 @@ int main() {
                 Date date;
                 while(!date.getValid()){
                     try {
-                        std::cout << "Date of the task " << std::endl;
+                        std::cout << "Date of the task [dd/mm/yy]" << std::endl;
                         std::cin >> day >> slash >> month >> slash >> year;
                         date.setYear(year);
                         date.setMonth(month);
@@ -43,7 +43,7 @@ int main() {
                 Clock time;
                 while (!time.getValid()) {
                     try {
-                        std::cout << "Time of the task " << std::endl;
+                        std::cout << "Time of the task [hh:mm] " << std::endl;
                         std::cin >> hour >> points >> min;
                         time.setMinute(min);
                         time.setHour(hour);
