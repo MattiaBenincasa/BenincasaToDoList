@@ -6,14 +6,15 @@
 
 void Clock::setMinute(int m) {
     if (m < 0 || m > 59)
-        throw InvalidTime("InvalidMinute");
+        throw InvalidTime("Minutes selected are not valid.");
     minute = m;
 }
 
 void Clock::setHour(int h) {
     if (h < 0 || h > 23)
-        throw InvalidTime("InvalidHour");
+        throw InvalidTime("Hours selected are not valid");
     hour = h;
+    valid = true;
 }
 
 std::ostream& operator << (std::ostream& out, const Clock& c){

@@ -26,26 +26,32 @@ int main() {
                 std::cout << "Insert a description for the task" << std::endl;
                 std::cin.ignore();
                 std::getline(std::cin, description);
-                try {
-                    std::cout << "Date of the task " << std::endl;
-                    std::cin >> day >> slash >> month >> slash >> year;
-                    std::cout << "Time of the task " << std::endl;
-                    std::cin >> hour >> points >> min;
-                    Date date;
-                    date.setYear(year);
-                    date.setMonth(month);
-                    date.setDay(day);
-                    Clock time;
-                    time.setMinute(min);
-                    time.setHour(hour);
-                    Task task(name, description, date, time);
-                    user.addTask(task);
-                    user.printTasks();
-                }catch (InvalidDate& e){
-                    std::cerr << "Date is not valid" << std::endl;
-                }catch (InvalidTime& e){
-                    std::cerr << "Time is not valid" << std::endl;
+                Date date;
+                while(!date.getValid()){
+                    try {
+                        std::cout << "Date of the task " << std::endl;
+                        std::cin >> day >> slash >> month >> slash >> year;
+                        date.setYear(year);
+                        date.setMonth(month);
+                        date.setDay(day);
+                    }catch (const InvalidDate& e){
+                        std::cerr << "ERROR! " << e.what() << std::endl;
+                    }
                 }
+                Clock time;
+                while (!time.getValid()) {
+                    try {
+                        std::cout << "Time of the task " << std::endl;
+                        std::cin >> hour >> points >> min;
+                        time.setMinute(min);
+                        time.setHour(hour);
+                    } catch  (const InvalidTime& e){
+                        std::cerr << "ERROR! " << e.what() << std::endl;
+                    }
+                }
+                Task task(name, description, date, time);
+                user.addTask(task);
+                user.printTasks();
                 break;
             }
             case 2:{

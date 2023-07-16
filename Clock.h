@@ -25,9 +25,14 @@ public:
     friend std::ostream& operator << (std::ostream&, const Clock& c);
     friend std::istream& operator >> (std::istream& cin, Clock& c);
 
+    bool getValid() const {
+        return valid;
+    }
+
 private:
     int minute;
     int hour;
+    bool valid {false};
 };
 
 #endif //BENINCASATODOLIST_CLOCK_H
