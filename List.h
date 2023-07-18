@@ -13,9 +13,14 @@
 class List {
 public:
     List();
+    explicit List(std::string& n);
 
     std::map<std::string, Task> getTasks() const {
         return tasks;
+    }
+
+    int getSize() const {
+        return tasks.size();
     }
 
     void readFile();
@@ -25,9 +30,12 @@ public:
     void markNotCompleted(std::string& n);
     void saveTasks() const;
 
+    bool operator == (const std::string& right);
+
     void printTasks() const;
 
 private:
+    std::string name;
     std::map<std::string, Task> tasks;
 };
 

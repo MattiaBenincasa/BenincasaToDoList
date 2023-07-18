@@ -8,6 +8,10 @@ List::List() {
     readFile();
 }
 
+List::List(std::string &n) : name(n) {
+    readFile();
+}
+
 void List::readFile() {
     std::ifstream fin;
     fin.open("ToDoList.data");
@@ -72,4 +76,11 @@ void List::saveTasks() const {
 
     outFile.close();
     std::cout << "Successfully saved!" <<std::endl;
+}
+
+bool List::operator==(const std::string &right) {
+    if(name == right)
+        return true;
+    else
+        return false;
 }
