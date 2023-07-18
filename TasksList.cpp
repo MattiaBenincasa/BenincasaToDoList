@@ -18,3 +18,24 @@ void TasksList::removeList(std::string& name) {
         if(!task.second.getCompleted())
             notCompleted--;
 }
+
+List& TasksList::getList(std::string &name) {
+    auto findList = std::find(lists.begin(), lists.end(), name);
+    return *findList;
+}
+
+void TasksList::printLists() const {
+    for(auto& list : lists)
+        std::cout << list.getName() << std::endl;
+}
+
+void TasksList::printTasks(std::string& listName) {
+    auto findList = std::find(lists.begin(), lists.end(), listName);
+    (*findList).printTasks();
+}
+
+void TasksList::addTask(std::string &listName, const Task& task) {
+    auto findList = std::find(lists.begin(), lists.end(), listName);
+    (*findList).addTask(task);
+}
+

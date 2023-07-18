@@ -14,7 +14,7 @@ List::List(std::string &n) : name(n) {
 
 void List::readFile() {
     std::ifstream fin;
-    fin.open("ToDoList.data");
+    fin.open(name + ".data");
     if(!fin)
         return;
     Task task;
@@ -32,7 +32,7 @@ void List::addTask(const Task& newTask) {
     tasks.insert(std::make_pair(newTask.getName(), newTask));
 
     std::ofstream outFile;
-    outFile.open("ToDoList.data", std::ios::app);
+    outFile.open(name + ".data", std::ios::app);
 
     outFile << newTask;
     outFile.close();
@@ -70,7 +70,7 @@ void List::printTasks() const {
 
 void List::saveTasks() const {
     std::ofstream outFile;
-    outFile.open("ToDoList.data", std::ios::trunc);
+    outFile.open(name + ".data", std::ios::trunc);
     for(auto& task : tasks)
         outFile << task.second;
 

@@ -10,11 +10,22 @@
 
 class TasksList {
 public:
-    void addList(const List& list);
-    void removeList(std::string& name);
+
+    int getTotal() const{
+        return total;
+    }
+
+    int getNotCompleted() const {
+        return notCompleted;
+    }
 
     List& getList(std::string& name);
 
+    void addList(const List& list);
+    void removeList(std::string& name);
+    void addTask(std::string& listName, const Task& task);
+    void printLists() const;
+    void printTasks(std::string& listName);
     void save() const;
 private:
     std::list<List> lists;

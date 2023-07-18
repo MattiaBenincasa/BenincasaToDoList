@@ -1,16 +1,19 @@
 #include <iostream>
 #include "List.h"
 #include "InvalidDate.h"
+#include "TasksList.h"
 
 int main() {
-    List user;
+    TasksList system;
+
+    std::string listName;
     int choice;
     std::string name, description;
     int day, month, year, hour, min;
     char slash, points;
     std::cout << "\t\t |To Do List|" << std::endl << std::endl;
     std::cout << "TASK NOT COMPLETED:" << std::endl;
-    user.printTasks();
+    //list.printTasks();
     do {
         std::cout << "----------------" << std::endl;
         std::cout << "Select an option" << std::endl;
@@ -19,11 +22,15 @@ int main() {
         std::cout << "3 - mark as completed" << std::endl;
         std::cout << "4 - mark as not completed" << std::endl;
         std::cout << "5 - save tasks" << std::endl;
-        std::cout << "6 - Exit" << std::endl;
+        std::cout << "6 - Create a list" << std::endl;
+        std::cout << "7 - Remove a list" << std::endl;
+        std::cout << "8 - Exit" << std::endl;
         std::cout << "-------------------------" << std::endl;
         std::cin >> choice;
         switch (choice) {
             case 1:{
+                std::cout << "Insert the name of the list" << std::endl;
+                std::cin >> listName;
                 std::cout << "Insert a name for the task" << std::endl;
                 std::cin >> name;
                 std::cout << "Insert a description for the task" << std::endl;
@@ -53,42 +60,65 @@ int main() {
                     }
                 }
                 Task task(name, description, date, time);
-                user.addTask(task);
-                user.printTasks();
+                List list = system.getList(listName);
+                list.addTask(task);
+                list.printTasks();
                 break;
             }
             case 2:{
+                std::cout << "Insert the name of the list" << std::endl;
+                std::cin >> listName;
                 std::cout << "Insert the name of the task you want to delete" << std::endl;
                 std::cin >> name;
-                user.removeTask(name);
-                user.printTasks();
+                system.getList(listName).removeTask(name);
+                system.getList(listName).printTasks();
                 break;
             }
             case 3:{
+                std::cout << "Insert the name of the list" << std::endl;
+                std::cin >> listName;
                 std::cout << "Insert the name of the task you want to mark as completed" << std::endl;
                 std::cin >> name;
-                user.markCompleted(name);
-                user.printTasks();
+                system.getList(listName).markCompleted(name);
+                system.getList(listName).printTasks();
                 break;
             }
             case 4:{
+                std::cout << "Insert the name of the list" << std::endl;
+                std::cin >> listName;
                 std::cout << "Insert the name of the task you want to mark as not completed" << std::endl;
                 std::cin >> name;
-                user.markNotCompleted(name);
-                user.printTasks();
+                system.getList(listName).markNotCompleted(name);
+                system.getList(listName).printTasks();
                 break;
             }
             case 5:{
-                user.saveTasks();
-                user.printTasks();
+                //TODO implement a general method save that save the element of the all list
+                std::cout << "Insert the name of the list" << std::endl;
+                std::cin >> listName;
+                system.getList(listName).saveTasks();
+                system.getList(listName).printTasks();
                 break;
             }
             case 6:{
+                std::cout << "Insert the name of the list you want to create" << std::endl;
+                std::cin >> listName;
+                List list(listName);
+                system.addList(list);
+                system.printLists();
                 break;
             }
+            case 7:
+                std::cout << "Insert the name of the list you want to delete" << std::endl;
+                std::cin >> listName;
+                system.removeList(listName);
+                system.printLists();
+                break;
+            case 8:
+                break;
             default:
                 std::cout << "Invalid option" << std::endl;
         }
-    }while(choice != 6);
+    }while(choice != 8);
     return 0;
 }

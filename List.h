@@ -23,6 +23,10 @@ public:
         return tasks.size();
     }
 
+    std::string getName() const{
+        return name;
+    }
+
     void readFile();
     void addTask(const Task& newTask);
     void removeTask(std::string& n);
