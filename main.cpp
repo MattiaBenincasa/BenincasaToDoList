@@ -18,7 +18,8 @@ int main() {
         std::cout << "2 - remove a task" << std::endl;
         std::cout << "3 - mark as completed" << std::endl;
         std::cout << "4 - mark as not completed" << std::endl;
-        std::cout << "5 - Exit" << std::endl;
+        std::cout << "5 - save tasks" << std::endl;
+        std::cout << "6 - Exit" << std::endl;
         std::cout << "-------------------------" << std::endl;
         std::cin >> choice;
         switch (choice) {
@@ -78,11 +79,16 @@ int main() {
                 break;
             }
             case 5:{
+                user.saveTasks();
+                user.printTasks();
+                break;
+            }
+            case 6:{
                 break;
             }
             default:
                 std::cout << "Invalid option" << std::endl;
         }
-    }while(choice != 5);
+    }while(choice != 6);
     return 0;
 }

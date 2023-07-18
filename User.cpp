@@ -64,11 +64,12 @@ void User::printTasks() const {
         std::cout << task.second;
 }
 
-User::~User() {
+void User::saveTasks() const {
     std::ofstream outFile;
     outFile.open("ToDoList.data", std::ios::trunc);
     for(auto& task : tasks)
         outFile << task.second;
 
     outFile.close();
+    std::cout << "Successfully saved!" <<std::endl;
 }
