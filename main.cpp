@@ -1,9 +1,9 @@
 #include <iostream>
-#include "User.h"
+#include "List.h"
 #include "InvalidDate.h"
 
 int main() {
-    User user;
+    List user;
     int choice;
     std::string name, description;
     int day, month, year, hour, min;

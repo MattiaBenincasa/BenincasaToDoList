@@ -1331,8 +1331,8 @@ class ThreadWithParam : public ThreadWithParamBase {
   }
 
  private:
-  UserThreadFunc* const func_;  // User-supplied thread function.
-  const T param_;  // User-supplied parameter to the thread function.
+  UserThreadFunc* const func_;  // List-supplied thread function.
+  const T param_;  // List-supplied parameter to the thread function.
   // When non-NULL, used to block execution until the controller thread
   // notifies.
   Notification* const thread_can_start_;

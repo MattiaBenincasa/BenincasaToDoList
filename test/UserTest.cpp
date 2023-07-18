@@ -3,10 +3,10 @@
 //
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-#include "../User.h"
+#include "../List.h"
 
 TEST(User, AddRemoveTasks){
-    User user;
+    List user;
     std::string n;
     std::string desc;
     Date d;

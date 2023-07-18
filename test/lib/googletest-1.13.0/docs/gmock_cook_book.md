@@ -1782,7 +1782,7 @@ using ::testing::Sequence;
       .InSequence(s1, s2);
   EXPECT_CALL(log, Log(WARNING, _, "Data set is empty."))   // #2
       .InSequence(s1);
-  EXPECT_CALL(log, Log(WARNING, _, "User not found."))      // #3
+  EXPECT_CALL(log, Log(WARNING, _, "List not found."))      // #3
       .InSequence(s2);
 ```
 

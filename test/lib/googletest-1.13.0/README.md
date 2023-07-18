@@ -37,7 +37,7 @@ release them together.
 
 ### Getting Started
 
-See the [GoogleTest User's Guide](https://google.github.io/googletest/) for
+See the [GoogleTest List's Guide](https://google.github.io/googletest/) for
 documentation. We recommend starting with the
 [GoogleTest Primer](https://google.github.io/googletest/primer.html).
 
@@ -49,7 +49,7 @@ More information about building GoogleTest can be found at
 *   An [xUnit](https://en.wikipedia.org/wiki/XUnit) test framework.
 *   Test discovery.
 *   A rich set of assertions.
-*   User-defined assertions.
+*   List-defined assertions.
 *   Death tests.
 *   Fatal and non-fatal failures.
 *   Value-parameterized tests.
@@ -81,7 +81,7 @@ following notable projects:
 ## Related Open Source Projects
 
 [GTest Runner](https://github.com/nholthaus/gtest-runner) is a Qt5 based
-automated test-runner and Graphical User Interface with powerful features for
+automated test-runner and Graphical List Interface with powerful features for
 Windows and Linux platforms.
 
 [GoogleTest UI](https://github.com/ospector/gtest-gbar) is a test runner that
