@@ -7,30 +7,25 @@
 #include <list>
 #include "List.h"
 #include <string>
+#include <fstream>
 
 class TasksList {
 public:
+
+    TasksList();
 
     int getTotal() const{
         return total;
     }
 
-    int getNotCompleted() const {
-        return notCompleted;
-    }
-
-    List& getList(std::string& name);
-
     void addList(const List& list);
-    void removeList(std::string& name);
-    void addTask(std::string& listName, const Task& task);
+    void removeList();
     void printLists() const;
-    void printTasks(std::string& listName);
     void save() const;
+
 private:
     std::list<List> lists;
     int total {0};
-    int notCompleted {0};
 };
 
 #endif //BENINCASATODOLIST_TASKSLIST_H

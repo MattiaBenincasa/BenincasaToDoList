@@ -3,25 +3,50 @@
 //
 #include "TasksList.h"
 
+TasksList::TasksList() {
+    std::ifstream fin;
+
+    fin.open("Lists.data");
+
+    if(!fin)
+        return;
+    std::string name;
+    int tasks;
+    while (fin.good()){
+        fin >> name;
+        fin >> tasks;
+        List list(name);
+        lists.push_back(list);
+        total+= list.getSize();
+    }
+
+    fin.close();
+}
+
 void TasksList::addList(const List &list) {
     lists.push_back(list);
     total += list.getSize();
-    for (auto& task : list.getTasks())
-        if(!task.second.getCompleted())
-            notCompleted++;
+    std::ofstream fout;
+    fout.open("Lists.data", std::ios::app);
+    fout << list.getName() << std::endl;
+    fout << list.getSize() << std::endl;
+
+    fout.close();
 }
 
-void TasksList::removeList(std::string& name) {
+void TasksList::removeList() {
+    char name[20];
+    std::cout << "Enter the name of the list you want to delete with .data" << std::endl;
+    std::cin >> name;
     auto findList = std::find(lists.begin(), lists.end(), name);
     total -= findList->getSize();
-    for (auto& task : findList->getTasks())
-        if(!task.second.getCompleted())
-            notCompleted--;
-}
+    lists.remove(*findList);
+    bool result = remove(name);
+    if(result)
+        std::cout << "Successfully removed" << std::endl;
+    else
+        std::cout << "Error during the remove" << std::endl;
 
-List& TasksList::getList(std::string &name) {
-    auto findList = std::find(lists.begin(), lists.end(), name);
-    return *findList;
 }
 
 void TasksList::printLists() const {
@@ -29,13 +54,13 @@ void TasksList::printLists() const {
         std::cout << list.getName() << std::endl;
 }
 
-void TasksList::printTasks(std::string& listName) {
-    auto findList = std::find(lists.begin(), lists.end(), listName);
-    (*findList).printTasks();
-}
 
-void TasksList::addTask(std::string &listName, const Task& task) {
-    auto findList = std::find(lists.begin(), lists.end(), listName);
-    (*findList).addTask(task);
+void TasksList::save() const {
+    std::ofstream fout;
+    fout.open("Lists.data", std::ios::trunc);
+    for( auto& list : lists){
+        fout << list.getName() << std::endl;
+        fout << list.getSize() << std::endl;
+        list.saveTasks();
+    }
 }
-

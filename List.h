@@ -35,12 +35,15 @@ public:
     void saveTasks() const;
 
     bool operator == (const std::string& right);
-
+    bool operator == (const List& list) const;
     void printTasks() const;
 
 private:
     std::string name;
     std::map<std::string, Task> tasks;
 };
+
+
+
 
 #endif //BENINCASATODOLIST_LIST_H

@@ -84,3 +84,9 @@ bool List::operator==(const std::string &right) {
     else
         return false;
 }
+
+bool List::operator==(const List& list) const{
+    if(name == list.name)
+        return true;
+    else return false;
+}

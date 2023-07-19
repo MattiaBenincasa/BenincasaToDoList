@@ -12,8 +12,9 @@ int main() {
     int day, month, year, hour, min;
     char slash, points;
     std::cout << "\t\t |To Do List|" << std::endl << std::endl;
-    std::cout << "TASK NOT COMPLETED:" << std::endl;
-    //list.printTasks();
+    std::cout << "Lists of the user:" << std::endl;
+    system.printLists();
+    std::cout << "Total tasks: " << system.getTotal() << std::endl;
     do {
         std::cout << "----------------" << std::endl;
         std::cout << "Select an option" << std::endl;
@@ -24,7 +25,9 @@ int main() {
         std::cout << "5 - save tasks" << std::endl;
         std::cout << "6 - Create a list" << std::endl;
         std::cout << "7 - Remove a list" << std::endl;
-        std::cout << "8 - Exit" << std::endl;
+        std::cout << "8 - Print all lists" << std::endl;
+        std::cout << "9 - Exit" << std::endl;
+
         std::cout << "-------------------------" << std::endl;
         std::cin >> choice;
         switch (choice) {
@@ -60,8 +63,9 @@ int main() {
                     }
                 }
                 Task task(name, description, date, time);
-                List list = system.getList(listName);
+                List list(listName);
                 list.addTask(task);
+                system.addList(list);
                 list.printTasks();
                 break;
             }
@@ -70,8 +74,9 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to delete" << std::endl;
                 std::cin >> name;
-                system.getList(listName).removeTask(name);
-                system.getList(listName).printTasks();
+                List list(listName);
+                list.removeTask(name);
+                list.printTasks();
                 break;
             }
             case 3:{
@@ -79,8 +84,9 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to mark as completed" << std::endl;
                 std::cin >> name;
-                system.getList(listName).markCompleted(name);
-                system.getList(listName).printTasks();
+                List list(listName);
+                list.markCompleted(name);
+                list.printTasks();
                 break;
             }
             case 4:{
@@ -88,16 +94,17 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to mark as not completed" << std::endl;
                 std::cin >> name;
-                system.getList(listName).markNotCompleted(name);
-                system.getList(listName).printTasks();
+                List list(listName);
+                list.markNotCompleted(name);
+                list.printTasks();
                 break;
             }
             case 5:{
-                //TODO implement a general method save that save the element of the all list
                 std::cout << "Insert the name of the list" << std::endl;
                 std::cin >> listName;
-                system.getList(listName).saveTasks();
-                system.getList(listName).printTasks();
+                List list(listName);
+                list.saveTasks();
+                system.save();
                 break;
             }
             case 6:{
@@ -109,16 +116,18 @@ int main() {
                 break;
             }
             case 7:
-                std::cout << "Insert the name of the list you want to delete" << std::endl;
-                std::cin >> listName;
-                system.removeList(listName);
+                system.removeList();
                 system.printLists();
                 break;
             case 8:
+                system.printLists();
+                std::cout << "Total tasks: " << system.getTotal() << std::endl;
+                break;
+            case 9:
                 break;
             default:
                 std::cout << "Invalid option" << std::endl;
         }
-    }while(choice != 8);
+    }while(choice != 9);
     return 0;
 }
