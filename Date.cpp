@@ -4,15 +4,22 @@
 #include "Date.h"
 
 
+bool Date::leapYear(int y) const{
+    if(y%400 == 0 || y%4 == 0)
+        return true;
+    else if(y%100 == 0)
+        return false;
+
+    return false;
+}
+
 void Date::setDay(int d) {
-    if((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && (d <= 0 || d > 31))
-        throw InvalidDate("Day is not valid: max 31 days for this month");
-    else if ((month == 4 || month == 6 || month == 9 || month == 11) && (d <= 0 || d > 30))
-        throw InvalidDate("Day is not valid: max 30 days for this month");
-    else if (((year%4 == 0 || year%400 == 0) && month==2) && (d <= 0 || d > 29))
-        throw InvalidDate("Day is not valid: max 29 days for this month");
-    else if (((year%4 != 0 || year%400 != 0) && month==2) && (d <= 0 || d > 28))
-        throw InvalidDate("Day is not valid: max 28 days for this month");
+
+    if(((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ) && d > 31) ||
+    ((month == 4 || month == 6 || month == 9 || month == 11) && d > 30) || ((leapYear(year) && month == 2) &&
+    d > 29) || (!leapYear(year) && month == 2) && d > 28){
+        throw InvalidDate("Date is not valid");
+    }
 
     day = d;
     valid = true;

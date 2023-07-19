@@ -23,6 +23,7 @@ public:
         return year;
     }
 
+    bool leapYear(int y) const;
     void setDay(int d);
     void setMonth(int m);
     void setYear(int y);
