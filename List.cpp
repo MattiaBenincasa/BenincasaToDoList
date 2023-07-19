@@ -3,6 +3,7 @@
 //
 
 #include "List.h"
+#include "TasksList.h"
 
 List::List() {
     readFile();
@@ -30,12 +31,12 @@ void List::readFile() {
 
 void List::addTask(const Task& newTask) {
     tasks.insert(std::make_pair(newTask.getName(), newTask));
-
     std::ofstream outFile;
     outFile.open(name + ".data", std::ios::app);
 
     outFile << newTask;
     outFile.close();
+    TasksList::incTotal();
 }
 
 void List::removeTask(std::string &n) {
@@ -44,6 +45,8 @@ void List::removeTask(std::string &n) {
         std::cout << "Task not found" << std::endl;
     else
         tasks.erase(findTask);
+
+    TasksList::decrTotal();
 }
 
 void List::markCompleted(std::string &n) {

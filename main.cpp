@@ -3,9 +3,11 @@
 #include "InvalidDate.h"
 #include "TasksList.h"
 
-int main() {
-    TasksList system;
+int TasksList::total = 0;
 
+int main() {
+
+    TasksList system;
     std::string listName;
     int choice;
     std::string name, description;
@@ -63,10 +65,8 @@ int main() {
                     }
                 }
                 Task task(name, description, date, time);
-                List list(listName);
-                list.addTask(task);
-                system.addList(list);
-                list.printTasks();
+                system.getList(listName).addTask(task);
+                system.getList(listName).printTasks();
                 break;
             }
             case 2:{
@@ -74,9 +74,8 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to delete" << std::endl;
                 std::cin >> name;
-                List list(listName);
-                list.removeTask(name);
-                list.printTasks();
+                system.getList(listName).removeTask(name);
+                system.getList(listName).printTasks();
                 break;
             }
             case 3:{
@@ -84,9 +83,8 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to mark as completed" << std::endl;
                 std::cin >> name;
-                List list(listName);
-                list.markCompleted(name);
-                list.printTasks();
+                system.getList(listName).markCompleted(name);
+                system.getList(listName).printTasks();
                 break;
             }
             case 4:{
@@ -94,16 +92,11 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to mark as not completed" << std::endl;
                 std::cin >> name;
-                List list(listName);
-                list.markNotCompleted(name);
-                list.printTasks();
+                system.getList(listName).markNotCompleted(name);
+                system.getList(listName).markNotCompleted(name);
                 break;
             }
             case 5:{
-                std::cout << "Insert the name of the list" << std::endl;
-                std::cin >> listName;
-                List list(listName);
-                list.saveTasks();
                 system.save();
                 break;
             }
@@ -116,7 +109,10 @@ int main() {
                 break;
             }
             case 7:
-                system.removeList();
+                std::cout << "Insert the name of the list you want to remove" << std::endl;
+                std::cin >> listName;
+                system.removeList(listName);
+                system.removeListFile();
                 system.printLists();
                 break;
             case 8:

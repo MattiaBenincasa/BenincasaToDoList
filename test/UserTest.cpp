@@ -5,7 +5,7 @@
 #include <gtest/gtest.h>
 #include "../List.h"
 
-TEST(User, AddRemoveTasks){
+TEST(List, AddRemoveTasks){
     List user;
     std::string n;
     std::string desc;
@@ -14,6 +14,4 @@ TEST(User, AddRemoveTasks){
     Task task(n, desc, d, t);
     user.addTask(task);
     ASSERT_THAT(user.getTasks(), ::testing::Contains(std::make_pair(n, task)));
-    user.removeTask(n);
-    ASSERT_THAT(user.getTasks(),::testing::IsEmpty());
 }

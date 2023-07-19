@@ -12,7 +12,8 @@ TasksList::TasksList() {
         return;
     std::string name;
     int tasks;
-    while (fin.good()){
+    int completed;
+    while (fin >> name && fin >> tasks){
         fin >> name;
         fin >> tasks;
         List list(name);
@@ -34,13 +35,16 @@ void TasksList::addList(const List &list) {
     fout.close();
 }
 
-void TasksList::removeList() {
-    char name[20];
-    std::cout << "Enter the name of the list you want to delete with .data" << std::endl;
-    std::cin >> name;
+void TasksList::removeList(std::string& name) {
     auto findList = std::find(lists.begin(), lists.end(), name);
     total -= findList->getSize();
     lists.remove(*findList);
+}
+
+void TasksList::removeListFile() {
+    char name[20];
+    std::cout << "Enter the name of the file of the list you want to delete with .data" << std::endl;
+    std::cin >> name;
     bool result = remove(name);
     if(result)
         std::cout << "Successfully removed" << std::endl;
@@ -53,7 +57,6 @@ void TasksList::printLists() const {
     for(auto& list : lists)
         std::cout << list.getName() << std::endl;
 }
-
 
 void TasksList::save() const {
     std::ofstream fout;
