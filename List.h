@@ -27,6 +27,10 @@ public:
         return name;
     }
 
+    void setName(std::string& n) {
+        name = n;
+    }
+
     void readFile();
     void addTask(const Task& newTask);
     void removeTask(std::string& n);

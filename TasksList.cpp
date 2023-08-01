@@ -12,7 +12,6 @@ TasksList::TasksList() {
         return;
     std::string name;
     int tasks;
-    int completed;
     while (fin >> name && fin >> tasks){
         fin >> name;
         fin >> tasks;

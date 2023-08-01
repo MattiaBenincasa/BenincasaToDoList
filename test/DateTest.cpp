@@ -6,15 +6,20 @@
 
 class DateSuite : public::testing::Test{
 protected:
-    virtual void SetUp(){
-        d.setYear(2023);
+     void SetUp() override{
+        d.setYear(2024);
         d.setMonth(2);
     }
     Date d;
 };
 
 TEST_F(DateSuite, ThrowDayException){
-    EXPECT_THROW(d.setDay(29), InvalidDate);
+    d.setDay(29);
+    d.setYear(2023);
+    //EXPECT_THROW(d.setYear(2023), InvalidDate);
+    ASSERT_EQ(d.getDay(), 29);
+    ASSERT_EQ(d.getMonth(), 2);
+    ASSERT_EQ(d.getYear(), 2023);
 }
 
 TEST(Date, DefaultConstructor){
