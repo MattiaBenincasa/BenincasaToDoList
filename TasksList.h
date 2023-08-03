@@ -13,6 +13,7 @@ class TasksList {
 public:
 
     TasksList();
+    explicit TasksList(std::string nameFile);
 
     static int getTotal() {
         return total;
@@ -30,6 +31,7 @@ public:
         return lists;
     }
 
+    void read(std::string& nameFile);
     void addList(const List& list);
     void removeList(std::string& name);
     void removeListFile();

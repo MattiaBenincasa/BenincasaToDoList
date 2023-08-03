@@ -4,9 +4,18 @@
 #include "TasksList.h"
 
 TasksList::TasksList() {
+    std::string nameFile = "Lists";
+    read(nameFile);
+}
+
+TasksList::TasksList(std::string nameFile) {
+    read(nameFile);
+}
+
+void TasksList::read(std::string& nameFile) {
     std::ifstream fin;
 
-    fin.open("Lists.data");
+    fin.open(nameFile + ".data");
 
     if(!fin)
         return;
@@ -17,7 +26,7 @@ TasksList::TasksList() {
         fin >> tasks;
         List list(name);
         lists.push_back(list);
-        total+= list.getSize();
+        total+= tasks;
     }
 
     fin.close();
