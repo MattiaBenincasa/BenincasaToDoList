@@ -40,6 +40,8 @@ public:
 
     bool operator == (const std::string& right);
     bool operator == (const List& list) const;
+    friend std::ifstream& operator >> (std::ifstream& ifs, List& list);
+
     void printTasks() const;
 
 private:

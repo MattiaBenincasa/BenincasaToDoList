@@ -93,3 +93,10 @@ bool List::operator==(const List& list) const{
         return true;
     else return false;
 }
+
+std::ifstream& operator >> (std::ifstream & ifs, List& list) {
+    ifs >> list.name;
+    int size = list.getSize();
+    ifs >> size;
+    return ifs;
+}

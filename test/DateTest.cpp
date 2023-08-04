@@ -15,11 +15,10 @@ protected:
 
 TEST_F(DateSuite, ThrowDayException){
     d.setDay(29);
-    d.setYear(2023);
-    //EXPECT_THROW(d.setYear(2023), InvalidDate);
-    ASSERT_EQ(d.getDay(), 29);
-    ASSERT_EQ(d.getMonth(), 2);
-    ASSERT_EQ(d.getYear(), 2023);
+    EXPECT_THROW(d.setYear(2023), InvalidDate);
+    d.setMonth(7);
+    d.setDay(31);
+    EXPECT_THROW(d.setMonth(6), InvalidDate);
 }
 
 TEST(Date, DefaultConstructor){

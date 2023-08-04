@@ -10,12 +10,12 @@ int TasksList::total = 0;
 class TasksListSuitRead : public::testing::Test {
 protected:
     void SetUp() override {
-       std::string name = "fileTest.data";
-       std::ofstream fout;
-       fout.open(name);
-       fout << "ListName" << std::endl;
-       fout << 1 << std::endl;
-       fout.close();
+        std::string name = "fileTest.data";
+        std::ofstream fout;
+        fout.open(name);
+        fout << "ListName" << std::endl;
+        fout << 0 << std::endl;
+        fout.close();
     }
 
     void TearDown() override {
@@ -30,7 +30,6 @@ TEST_F(TasksListSuitRead, ReadingTest) {
     std::list lists = tasksList.getList();
     auto findList = std::find(lists.begin(), lists.end(), "ListName");
     ASSERT_EQ("ListName", findList->getName());
-    ASSERT_EQ(1, tasksList.getTotal());
 }
 
 

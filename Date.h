@@ -24,6 +24,8 @@ public:
     }
 
     bool leapYear(int y) const;
+    void controlDayYear(int y);
+    void controlDayMonth(int m);
     void setDay(int d);
     void setMonth(int m);
     void setYear(int y);
