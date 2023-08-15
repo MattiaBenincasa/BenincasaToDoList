@@ -13,7 +13,7 @@ class TasksList {
 public:
 
     TasksList();
-    explicit TasksList(std::string nameFile);
+    explicit TasksList(const std::string& nameFile);
 
     static int getTotal() {
         return total;
@@ -27,22 +27,20 @@ public:
         total--;
     }
 
-    std::list<List> getList() const {
-        return lists;
-    }
-
-    void read(std::string& nameFile);
+    void read(const std::string& nameFile);
     void addList(const List& list);
-    void removeList(std::string& name);
+    void removeList(const std::string& name);
     void removeListFile();
     void printLists() const;
     void save() const;
 
-    List& getList(std::string& listName) {
-        auto findList = std::find(lists.begin(), lists.end(), listName);
-        return *findList;
-    }
+    void printTasks(const std::string& listName);
+    void addTask(const std::string& listName, const Task& task);
+    void removeTask(const std::string& taskName, const std::string& listName);
+    void markTaskCompleted(const std::string& taskName, const std::string& listName);
+    void markTaskNotCompleted(const std::string& taskName, const std::string& listName);
 
+    bool findList(const std::string& listName); //used in the test
 
 private:
     std::list<List> lists;

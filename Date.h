@@ -23,9 +23,6 @@ public:
         return year;
     }
 
-    bool leapYear(int y) const;
-    void controlDayYear(int y);
-    void controlDayMonth(int m);
     void setDay(int d);
     void setMonth(int m);
     void setYear(int y);
@@ -35,7 +32,12 @@ public:
     bool getValid() const {
         return valid;
     }
+
 private:
+    bool leapYear(int y) const;
+    void controlDayYear(int y);
+    void controlDayMonth(int m);
+
     int day;
     int month;
     int year;

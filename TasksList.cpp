@@ -8,11 +8,11 @@ TasksList::TasksList() {
     read(nameFile);
 }
 
-TasksList::TasksList(std::string nameFile) {
+TasksList::TasksList(const std::string& nameFile) {
     read(nameFile);
 }
 
-void TasksList::read(std::string& nameFile) {
+void TasksList::read(const std::string& nameFile) {
     std::ifstream fin;
 
     fin.open(nameFile + ".data");
@@ -43,7 +43,7 @@ void TasksList::addList(const List &list) {
     fout.close();
 }
 
-void TasksList::removeList(std::string& name) {
+void TasksList::removeList(const std::string& name) {
     auto findList = std::find(lists.begin(), lists.end(), name);
     total -= findList->getSize();
     lists.remove(*findList);
@@ -74,4 +74,37 @@ void TasksList::save() const {
         fout << list.getSize() << std::endl;
         list.saveTasks();
     }
+}
+
+void TasksList::printTasks(const std::string &listName) {
+    auto findList = std::find(lists.begin(), lists.end(), listName);
+    findList->printTasks(listName);
+}
+
+void TasksList::addTask(const std::string &listName, const Task& task) {
+    auto findList = std::find(lists.begin(), lists.end(), listName);
+    (*findList).addTask(task, listName);
+}
+
+void TasksList::removeTask(const std::string& taskName, const std::string &listName) {
+    auto findList = std::find(lists.begin(), lists.end(), listName);
+    findList->removeTask(taskName, listName);
+}
+
+void TasksList::markTaskCompleted(const std::string &taskName, const std::string &listName) {
+    auto findList = std::find(lists.begin(), lists.end(), listName);
+    findList->markCompleted(taskName, listName);
+}
+
+void TasksList::markTaskNotCompleted(const std::string &taskName, const std::string &listName) {
+    auto findList = std::find(lists.begin(), lists.end(), listName);
+    findList->markNotCompleted(taskName, listName);
+}
+
+bool TasksList::findList(const std::string &listName) {
+    auto findTheList = std::find(lists.begin(), lists.end(), listName);
+    if(findTheList!=lists.end())
+        return true;
+    else
+        return false;
 }

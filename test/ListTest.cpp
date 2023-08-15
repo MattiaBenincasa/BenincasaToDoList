@@ -16,12 +16,13 @@ protected:
         Date d;
         Clock t;
         Task task(name, desc, d, t);
-        user.addTask(task);
+        user.addTask(task, ListName);
     }
 
     void TearDown() override {
+        std::string ListName = "TestList";
         std::string name = "Test";
-        user.removeTask(name);
+        user.removeTask(name, ListName);
         user.saveTasks();
     }
 
@@ -96,13 +97,17 @@ TEST_F(ListSuitRead, ReadingTest){
     ASSERT_TRUE(findTask->second.getCompleted());
 }
 
+
 TEST(List, AddRemoveTasks){
+    std::string listName;
     List user;
-    std::string n;
+    std::string taskName = "TaskName";
     std::string desc;
     Date d;
     Clock t;
-    Task task(n, desc, d, t);
-    user.addTask(task);
-    ASSERT_THAT(user.getTasks(), ::testing::Contains(std::make_pair(n, task)));
+    Task task(taskName, desc, d, t);
+    user.addTask(task, listName);
+    ASSERT_TRUE(user.findTask(taskName));
+    user.removeTask(taskName, listName);
+    ASSERT_FALSE(user.findTask(taskName));
 }

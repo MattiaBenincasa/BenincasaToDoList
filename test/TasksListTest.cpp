@@ -26,10 +26,8 @@ protected:
 
 TEST_F(TasksListSuitRead, ReadingTest) {
     TasksList tasksList("fileTest");
-
-    std::list lists = tasksList.getList();
-    auto findList = std::find(lists.begin(), lists.end(), "ListName");
-    ASSERT_EQ("ListName", findList->getName());
+    std::string listName = "ListName";
+    ASSERT_TRUE(tasksList.findList(listName));
 }
 
 
@@ -65,8 +63,8 @@ TEST(TasksList, addRemoveLists){
     std::string name = "User";
     List list(name);
     system.addList(list);
-    ASSERT_THAT(system.getList(), ::testing::Contains(list));
+    ASSERT_TRUE(system.findList(name));
     system.removeList(name);
-    ASSERT_THAT(system.getList(), ::testing::IsEmpty());
+    ASSERT_FALSE(system.findList(name));
 }
 

@@ -65,8 +65,8 @@ int main() {
                     }
                 }
                 Task task(name, description, date, time);
-                system.getList(listName).addTask(task);
-                system.getList(listName).printTasks();
+                system.addTask(listName, task);
+                system.printTasks(listName);
                 break;
             }
             case 2:{
@@ -74,8 +74,8 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to delete" << std::endl;
                 std::cin >> name;
-                system.getList(listName).removeTask(name);
-                system.getList(listName).printTasks();
+                system.removeTask(name, listName);
+                system.printTasks(listName);
                 break;
             }
             case 3:{
@@ -83,8 +83,8 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to mark as completed" << std::endl;
                 std::cin >> name;
-                system.getList(listName).markCompleted(name);
-                system.getList(listName).printTasks();
+                system.markTaskCompleted(name, listName);
+                system.printTasks(listName);
                 break;
             }
             case 4:{
@@ -92,8 +92,8 @@ int main() {
                 std::cin >> listName;
                 std::cout << "Insert the name of the task you want to mark as not completed" << std::endl;
                 std::cin >> name;
-                system.getList(listName).markNotCompleted(name);
-                system.getList(listName).markNotCompleted(name);
+                system.markTaskNotCompleted(name, listName);
+                system.printTasks(listName);
                 break;
             }
             case 5:{
