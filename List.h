@@ -43,7 +43,7 @@ public:
     friend std::ifstream& operator >> (std::ifstream& ifs, List& list);
 
     void printTasks(const std::string& n) const;
-    bool findTask(const std::string& name); //used in the test
+    bool findTask(const std::string& name);
 
 private:
     std::string name;

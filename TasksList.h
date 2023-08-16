@@ -40,7 +40,7 @@ public:
     void markTaskCompleted(const std::string& taskName, const std::string& listName);
     void markTaskNotCompleted(const std::string& taskName, const std::string& listName);
 
-    bool findList(const std::string& listName); //used in the test
+    bool findList(const std::string& listName);
 
 private:
     std::list<List> lists;
