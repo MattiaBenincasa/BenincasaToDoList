@@ -29,7 +29,7 @@ void List::readFile() {
     }
 }
 
-void List::addTask(const Task& newTask, const std::string& n) {
+bool List::addTask(const Task& newTask, const std::string& n) {
     if(name == n){
         tasks.insert(std::make_pair(newTask.getName(), newTask));
         std::ofstream outFile;
@@ -38,54 +38,76 @@ void List::addTask(const Task& newTask, const std::string& n) {
         outFile << newTask;
         outFile.close();
         TasksList::incTotal();
-    }else
+        return true;
+    }else {
         std::cout << "List not found" << std::endl;
+        return false;
+    }
 }
 
-void List::removeTask(const std::string &taskName, const std::string& listName) {
+bool List::removeTask(const std::string &taskName, const std::string& listName) {
     if(name == listName) {
         auto findTask = tasks.find(taskName);
-        if(findTask == tasks.end())
+        if(findTask == tasks.end()) {
             std::cout << "Task not found" << std::endl;
-        else
+            return false;
+        }
+        else {
             tasks.erase(findTask);
-
-        TasksList::decrTotal();
-    }else
+            TasksList::decrTotal();
+            return true;
+        }
+    }else {
         std::cout << "List not found" << std::endl;
+        return false;
+    }
 }
 
-void List::markCompleted(const std::string &taskName, const std::string& listName) {
+bool List::markCompleted(const std::string &taskName, const std::string& listName) {
     if(name == listName){
         auto findTask = tasks.find(taskName);
-        if(findTask == tasks.end())
+        if(findTask == tasks.end()){
             std::cout << "Task not found" << std::endl;
-        else
+            return false;
+        }
+        else{
             findTask->second.isCompleted();
-    }else
+            return true;
+        }
+    }else {
         std::cout << "List not found" << std::endl;
-
+        return false;
+    }
 }
 
-void List::markNotCompleted(const std::string &taskName, const std::string& listName) {
+bool List::markNotCompleted(const std::string &taskName, const std::string& listName) {
     if(name == listName) {
         auto findTask = tasks.find(taskName);
-        if(findTask == tasks.end())
+        if(findTask == tasks.end()){
             std::cout << "Task not found" << std::endl;
-        else
+            return false;
+        }
+        else{
             findTask->second.notCompleted();
-    }else
+            return true;
+        }
+    }else{
         std::cout << "List not found" << std::endl;
+        return false;
+    }
 
 }
 
-void List::printTasks(const std::string& n) const {
+bool List::printTasks(const std::string& n) const {
     if(name == n) {
         std::cout << "------------------" << std::endl;
         for (auto &task: tasks)
             std::cout << task.second;
-    }else
+        return true;
+    }else {
         std::cout << "No list to show" << std::endl;
+        return false;
+    }
 }
 
 void List::saveTasks() const {

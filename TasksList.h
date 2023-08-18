@@ -29,16 +29,16 @@ public:
 
     void read(const std::string& nameFile);
     void addList(const List& list);
-    void removeList(const std::string& name);
+    bool removeList(const std::string& name);
     void removeListFile();
     void printLists() const;
     void save() const;
 
-    void printTasks(const std::string& listName);
-    void addTask(const std::string& listName, const Task& task);
-    void removeTask(const std::string& taskName, const std::string& listName);
-    void markTaskCompleted(const std::string& taskName, const std::string& listName);
-    void markTaskNotCompleted(const std::string& taskName, const std::string& listName);
+    bool printTasks(const std::string& listName);
+    bool addTask(const std::string& listName, const Task& task);
+    bool removeTask(const std::string& taskName, const std::string& listName);
+    bool markTaskCompleted(const std::string& taskName, const std::string& listName);
+    bool markTaskNotCompleted(const std::string& taskName, const std::string& listName);
 
     bool findList(const std::string& listName);
 

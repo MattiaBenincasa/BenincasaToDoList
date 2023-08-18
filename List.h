@@ -32,17 +32,17 @@ public:
     }
 
     void readFile();
-    void addTask(const Task& newTask, const std::string& n);
-    void removeTask(const std::string& taskName, const std::string& listName);
-    void markCompleted(const std::string& taskName, const std::string& listName);
-    void markNotCompleted(const std::string& taskName, const std::string& listName);
+    bool addTask(const Task& newTask, const std::string& n);
+    bool removeTask(const std::string& taskName, const std::string& listName);
+    bool markCompleted(const std::string& taskName, const std::string& listName);
+    bool markNotCompleted(const std::string& taskName, const std::string& listName);
     void saveTasks() const;
 
     bool operator == (const std::string& right);
     bool operator == (const List& list) const;
     friend std::ifstream& operator >> (std::ifstream& ifs, List& list);
 
-    void printTasks(const std::string& n) const;
+    bool printTasks(const std::string& n) const;
     bool findTask(const std::string& name);
 
 private:

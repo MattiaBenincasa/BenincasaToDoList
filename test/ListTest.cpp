@@ -111,3 +111,17 @@ TEST(List, AddRemoveTasks){
     user.removeTask(taskName, listName);
     ASSERT_FALSE(user.findTask(taskName));
 }
+
+TEST(List, RemoveResearhTaskNotPresent){
+    List system;
+    std::string task = "Not Present";
+    std::string list;
+    ASSERT_FALSE(system.removeTask(task, list));
+    ASSERT_FALSE(system.markCompleted(task, list));
+    ASSERT_FALSE(system.markNotCompleted(task, list));
+    ASSERT_FALSE(system.findTask(task));
+    Task taskTest;
+    std::string listTest = "List not present";
+    ASSERT_FALSE(system.addTask(taskTest, listTest));
+    ASSERT_FALSE(system.printTasks(listTest));
+}

@@ -68,3 +68,16 @@ TEST(TasksList, addRemoveLists){
     ASSERT_FALSE(system.findList(name));
 }
 
+TEST(TasksList, reserchRemoveListNotPresent){
+    TasksList system;
+    std::string task = "Task not present";
+    std::string list = "List not present";
+    ASSERT_FALSE(system.removeList(list));
+    ASSERT_FALSE(system.printTasks(list));
+    Task taskTest;
+    ASSERT_FALSE(system.addTask(list, taskTest));
+    ASSERT_FALSE(system.removeTask(task, list));
+    ASSERT_FALSE(system.findList(list));
+    ASSERT_FALSE(system.markTaskCompleted(task, list));
+    ASSERT_FALSE(system.markTaskNotCompleted(task, list));
+}

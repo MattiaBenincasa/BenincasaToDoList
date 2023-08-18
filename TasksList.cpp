@@ -43,10 +43,14 @@ void TasksList::addList(const List &list) {
     fout.close();
 }
 
-void TasksList::removeList(const std::string& name) {
+bool TasksList::removeList(const std::string& name) {
     auto findList = std::find(lists.begin(), lists.end(), name);
-    total -= findList->getSize();
-    lists.remove(*findList);
+    if(findList != lists.end()){
+        total -= findList->getSize();
+        lists.remove(*findList);
+        return true;
+    }else
+        return false;
 }
 
 void TasksList::removeListFile() {
@@ -76,29 +80,29 @@ void TasksList::save() const {
     }
 }
 
-void TasksList::printTasks(const std::string &listName) {
+bool TasksList::printTasks(const std::string &listName) {
     auto findList = std::find(lists.begin(), lists.end(), listName);
-    findList->printTasks(listName);
+    return findList->printTasks(listName);
 }
 
-void TasksList::addTask(const std::string &listName, const Task& task) {
+bool TasksList::addTask(const std::string &listName, const Task& task) {
     auto findList = std::find(lists.begin(), lists.end(), listName);
-    (*findList).addTask(task, listName);
+    return (*findList).addTask(task, listName);
 }
 
-void TasksList::removeTask(const std::string& taskName, const std::string &listName) {
+bool TasksList::removeTask(const std::string& taskName, const std::string &listName) {
     auto findList = std::find(lists.begin(), lists.end(), listName);
-    findList->removeTask(taskName, listName);
+    return findList->removeTask(taskName, listName);
 }
 
-void TasksList::markTaskCompleted(const std::string &taskName, const std::string &listName) {
+bool TasksList::markTaskCompleted(const std::string &taskName, const std::string &listName) {
     auto findList = std::find(lists.begin(), lists.end(), listName);
-    findList->markCompleted(taskName, listName);
+    return findList->markCompleted(taskName, listName);
 }
 
-void TasksList::markTaskNotCompleted(const std::string &taskName, const std::string &listName) {
+bool TasksList::markTaskNotCompleted(const std::string &taskName, const std::string &listName) {
     auto findList = std::find(lists.begin(), lists.end(), listName);
-    findList->markNotCompleted(taskName, listName);
+    return findList->markNotCompleted(taskName, listName);
 }
 
 bool TasksList::findList(const std::string &listName) {
